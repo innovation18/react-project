@@ -3,29 +3,44 @@ import React, { Component } from "react";
 class Counter extends Component {
   state = {
     count: 0,
-    classes: "badge m-2 badge-",
+    message: "Hello! Welcome onboard! We are lucky to have you ",
+    // classes: ["Python", "Angluar", "Node JS", "React"],
+    preRequisite: ["HTML", "CSS", "Java Script Basics", "Readiness"],
+    // ["HTML", "CSS", "Java Script Basics", "Readiness"]
   };
 
   render() {
+    const listStyle = {
+      "list-style-type": "none",
+    };
+
+    // const a = document.getElementById('HTML');
+
     return (
       <React.Fragment>
-        <span className={this.getBadgeClasses()}>{this.state.count}</span>
-        <span>
-          <button>Increment</button>
-        </span>
+        <div class="jumbotron text-center mt-1">
+          <h1 class="display-4">Hello, Little Ones!</h1>
+          <p class="lead">Welcome to CoderShunya! We Learn. We Code.</p>
+          <p class="font-italic">
+            This is going to be our first very web application on React!
+          </p>
+        </div>
+
+        <ul style={listStyle}>
+          {this.state.preRequisite.map((tag) => (
+            <li key={tag}>
+              <input type="checkbox" id={tag} /> {tag}
+            </li>
+          ))}
+        </ul>
       </React.Fragment>
     );
   }
 
-  formatCounter() {
-    const { count } = this.state;
-    return count === 0 ? "Zero" : count;
-  }
+  //Placeholder - User Information from Session.
 
-  getBadgeClasses() {
-    return (
-      this.state.classes + (this.state.count === 0 ? "warning" : "primary")
-    );
+  getUser(name) {
+    return name;
   }
 }
 
